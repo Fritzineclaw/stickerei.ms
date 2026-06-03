@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const leistungen = (await getCollection('leistungen')).sort((a, b) => a.data.reihenfolge - b.data.reihenfolge);
+const features = (await getCollection('features')).sort((a, b) => a.data.reihenfolge - b.data.reihenfolge);
+---
+
+<Layout title="stickerei.ms – Stickdateien kaufen & online bestellen">
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>Stickdateien kaufen & online bestellen – für Stickmaschinen, privat & gewerblich</h1>
+    </div>
+  </section>
+
+  <section id="intro">
+    <div class="container">
+      <div class="intro-text">
+        <p>Willkommen bei stickerei.ms – Ihrem Online-Shop für hochwertige Stickdateien.</p>
+        <p>Unsere Stickdateien werden schnell per Emein versandt. So können Sie direkt starten und Ihre kreativen Ideen verwirklichen. Ob Logos, Schriftzüge, Ornamente, florale Muster oder individuelle Sonderanfertigungen — bei uns können Sie hochwertige Stickdateien kaufen, die perfekt auf moderne Stickmaschinen abgestimmt sind.</p>
+      </div>
+
+      <h2>Unsere Vorteile</h2>
+      <div class="product-grid">
+        {features.map((feature) => (
+          <div class="feature-card">
+            <h3>{feature.data.title}</h3>
+            <p>{feature.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="leistungen">
+    <div class="container">
+      <h2>Unsere Leistungen</h2>
+      <div class="product-grid">
+        {leistungen.map((leistung) => (
+          <div class="product-card">
+            <h3>{leistung.data.name}</h3>
+            <p>{leistung.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="container">
+      <div class="cta">
+        <h2>Perfekte Stickerei beginnt mit der richtigen Datei.</h2>
+        <p>Kontaktieren Sie uns für individuelle Anfragen oder stöbern Sie in unserem Sortiment.</p>
+        <a href="mailto:info@stickerei.ms" class="button">Jetzt anfragen</a>
+        <div class="kontakt-info">
+          <a href="mailto:info@stickerei.ms">info@stickerei.ms</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

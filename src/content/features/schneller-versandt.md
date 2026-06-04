@@ -1,6 +1,6 @@
 ---
-title: Schneller Emailversandt
-reihenfolge: 1
+title: Schnelle Umsetzung
+reihenfolge: 3
 ---
 
-Unsere Stickdateien werden Ihnen schnell per Emein versandt.
+Motive werden am Computer erstellt, getestet und auf die Maschine übertragen – so lässt sich relativ schnell und in guter Qualität fast jede Idee umsetzen. Sie können Textilien bei uns kaufen oder anliefern und bei uns abholen.

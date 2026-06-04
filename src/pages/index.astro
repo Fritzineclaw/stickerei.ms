@@ -6,18 +6,20 @@ const leistungen = (await getCollection('leistungen')).sort((a, b) => a.data.rei
 const features = (await getCollection('features')).sort((a, b) => a.data.reihenfolge - b.data.reihenfolge);
 ---
 
-<Layout title="stickerei.ms – Stickdateien kaufen & online bestellen">
+<Layout title="Stickerei Münster – PIRNANGO">
   <section class="hero" id="home">
     <div class="container">
-      <h1>Stickdateien kaufen & online bestellen – für Stickmaschinen, privat & gewerblich</h1>
+      <h1>Stickerei in Münster – Textilien mit Ihrem Logo</h1>
+      <p>Bestickung in Klein- und Großauflagen. Polos, Sweatshirts, Caps, Jacken, Stoffzuschnitte und Patches. Für Unternehmen und Privat.</p>
     </div>
   </section>
 
   <section id="intro">
     <div class="container">
       <div class="intro-text">
-        <p>Willkommen bei stickerei.ms – Ihrem Online-Shop für hochwertige Stickdateien.</p>
-        <p>Unsere Stickdateien werden schnell per Emein versandt. So können Sie direkt starten und Ihre kreativen Ideen verwirklichen. Ob Logos, Schriftzüge, Ornamente, florale Muster oder individuelle Sonderanfertigungen — bei uns können Sie hochwertige Stickdateien kaufen, die perfekt auf moderne Stickmaschinen abgestimmt sind.</p>
+        <p>Lassen Sie Ihr Logo oder Motiv als Stick auf Gewebe bringen. Eine Stickdatei erstellen wir Ihnen gegen eine einmalige Gebühr.</p>
+        <p>Sie können Textilien bei uns kaufen, oder anliefern und abholen. Wir besticken Polos, Sweatshirts, Caps und Jacken. Außerdem sticken wir auf Stoffzuschnitte und erstellen Patches zum Aufnähen oder Aufdrucken. Individuelle und hochwertige Lösungen für Ihre Textilien.</p>
+        <p>Als erfahrene Stickerei bieten wir Ihnen professionelle Lösungen für Ihre individuellen Bedürfnisse. Ob Sie Kleidung für Ihr Unternehmen oder für private Zwecke besticken lassen möchten – wir versprechen Ihnen hochwertige und zufriedenstellende Ergebnisse. Kontaktieren Sie uns gerne für eine individuelle Beratung.</p>
       </div>
 
       <h2>Unsere Vorteile</h2>
@@ -49,11 +51,15 @@ const features = (await getCollection('features')).sort((a, b) => a.data.reihenf
   <section id="kontakt">
     <div class="container">
       <div class="cta">
-        <h2>Perfekte Stickerei beginnt mit der richtigen Datei.</h2>
-        <p>Kontaktieren Sie uns für individuelle Anfragen oder stöbern Sie in unserem Sortiment.</p>
-        <a href="mailto:info@stickerei.ms" class="button">Jetzt anfragen</a>
+        <h2>Jetzt Angebot anfordern</h2>
+        <p>Wir beraten Sie individuell – ob Einzelstück oder Großauflage, ob Unternehmenslogo oder Vereinsemblem.</p>
+        <a href="tel:+4925113656540" class="button">0251 / 13656540</a>
+        <a href="mailto:info@pirnango.de" class="button secondary">info@pirnango.de</a>
         <div class="kontakt-info">
-          <a href="mailto:info@stickerei.ms">info@stickerei.ms</a>
+          <div>
+            <strong>PIRNANGO GmbH &amp; Co. KG</strong><br />
+            Höltenweg 57, 48155 Münster
+          </div>
         </div>
       </div>
     </div>

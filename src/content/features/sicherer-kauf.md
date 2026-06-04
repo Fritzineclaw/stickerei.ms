@@ -1,6 +1,6 @@
 ---
-title: Sicherer Kauf
-reihenfolge: 3
+title: Beratung & Service
+reihenfolge: 4
 ---
 
-Kaufen Sie Stickdateien sicher und unkompliziert in unserem Online-Shop.
+Wir beraten Sie gerne für eine individuelle Lösung – ob Material­frage, Motiv­umsetzung oder Auflagen­größe. Direkter Draht zur Stickerei in Münster, keine Hotline, keine Wartezeit: 0251 / 13656540 oder info@pirnango.de.

@@ -8,7 +8,11 @@ const features = (await getCollection('features')).sort((a, b) => a.data.reihenf
 
 <Layout title="Stickerei Münster – PIRNANGO">
   <section class="hero" id="home">
-    <div class="container">
+    <video class="hero-bg" autoplay loop muted playsinline preload="auto" aria-hidden="true">
+      <source src="/videos/stickomator.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="container hero-inner">
       <h1>Stickerei in Münster – Textilien mit Ihrem Logo</h1>
       <p>Bestickung in Klein- und Großauflagen. Polos, Sweatshirts, Caps, Jacken, Stoffzuschnitte und Patches. Für Unternehmen und Privat.</p>
     </div>

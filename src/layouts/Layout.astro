@@ -229,7 +229,12 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
     background: var(--color-vanilla);
     color: var(--color-primary);
     text-align: center;
-    padding: 300px 0;
+    padding: 0 0 80px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     overflow: visible;
     isolation: isolate;
     -webkit-mask-image: url('/wave-edges.svg');
@@ -260,6 +265,7 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
   .hero-inner {
     position: relative;
     z-index: 1;
+    width: 100%;
   }
 
   .hero h1 { color: var(--color-primary); font-size: 2.25rem; }
@@ -347,7 +353,7 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
   @media (max-width: 600px) {
     h1 { font-size: 1.7rem; }
     h2 { font-size: 1.4rem; }
-    .hero { padding: 180px 0; }
+    .hero { padding: 0 0 40px; min-height: 100vh; }
     .hero h1 { font-size: 1.5rem; }
     .hero p { font-size: 0.7rem; }
   }

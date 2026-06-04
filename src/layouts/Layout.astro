@@ -52,6 +52,7 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
     --color-accent: #3a4d20;
     --color-orange: #ff461a;
     --color-orange-hover: #e63e17;
+    --color-vanilla: #f5e6c8;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -150,8 +151,8 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
 
   .hero {
     position: relative;
-    background: var(--color-primary);
-    color: white;
+    background: var(--color-vanilla);
+    color: var(--color-primary);
     text-align: center;
     padding: 150px 0;
     overflow: hidden;
@@ -165,13 +166,13 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
     height: 100%;
     object-fit: cover;
     z-index: -2;
-    opacity: 0.55;
+    opacity: 0.4;
   }
 
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(29,50,16,0.7) 0%, rgba(58,77,32,0.55) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.22) 100%);
     z-index: -1;
   }
 
@@ -180,8 +181,8 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
     z-index: 1;
   }
 
-  .hero h1 { color: white; font-size: 3.9rem; }
-  .hero p { font-size: 1.65rem; max-width: 800px; margin: 30px auto 0; line-height: 1.4; }
+  .hero h1 { color: var(--color-primary); font-size: 3.9rem; }
+  .hero p { color: var(--color-primary); font-size: 1.65rem; max-width: 800px; margin: 30px auto 0; line-height: 1.4; }
 
   .product-grid {
     display: grid;

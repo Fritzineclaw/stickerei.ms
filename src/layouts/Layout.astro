@@ -13,6 +13,17 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <title>{title}</title>
   </head>
   <body>
@@ -22,6 +33,22 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
           <a href="/" class="logo" aria-label="PIRNANGO Stickerei Münster – Zur Startseite">
             <img src="/logo.svg" alt="PIRNANGO Stickerei Münster" class="logo-img" />
           </a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Tag/Nacht-Modus umschalten">
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/>
+              <line x1="12" y1="2" x2="12" y2="4"/>
+              <line x1="12" y1="20" x2="12" y2="22"/>
+              <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/>
+              <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
+              <line x1="2" y1="12" x2="4" y2="12"/>
+              <line x1="20" y1="12" x2="22" y2="12"/>
+              <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/>
+              <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
           <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-menu">
             <span></span>
             <span></span>
@@ -63,6 +90,20 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
         menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
       }
+
+      const themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+            try { localStorage.setItem('theme', 'light'); } catch (e) {}
+          } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+          }
+        });
+      }
     </script>
   </body>
 </html>
@@ -74,6 +115,30 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
     --color-orange: #ff461a;
     --color-orange-hover: #e63e17;
     --color-vanilla: #f5e6c8;
+    --color-bg: #fafafa;
+    --color-text: #333;
+    --color-surface: white;
+    --color-header-bg: white;
+    --color-footer-bg: #1d3210;
+    --color-footer-text: white;
+    --color-border: #eee;
+    --color-shadow: rgba(0, 0, 0, 0.08);
+  }
+
+  :root[data-theme="dark"] {
+    --color-primary: #d4e8b8;
+    --color-accent: #8aab5a;
+    --color-orange: #ff7a55;
+    --color-orange-hover: #ff9274;
+    --color-vanilla: #1f2a14;
+    --color-bg: #141a0c;
+    --color-text: #e6eadb;
+    --color-surface: #1f2a14;
+    --color-header-bg: #1f2a14;
+    --color-footer-bg: #0a0f06;
+    --color-footer-text: #d4e8b8;
+    --color-border: #2f3a1f;
+    --color-shadow: rgba(0, 0, 0, 0.4);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -83,8 +148,9 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: #fafafa;
+    color: var(--color-text);
+    background: var(--color-bg);
+    transition: background 0.2s, color 0.2s;
   }
 
   .container {
@@ -94,9 +160,9 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
   }
 
   header {
-    background: white;
+    background: var(--color-header-bg);
     padding: 20px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px var(--color-shadow);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -134,7 +200,7 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
 
   nav a {
     text-decoration: none;
-    color: #333;
+    color: var(--color-text);
     font-weight: 500;
     font-size: 0.95rem;
     transition: color 0.2s;
@@ -150,7 +216,34 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
     cursor: pointer;
     flex-direction: column;
     gap: 5px;
+    color: var(--color-primary);
   }
+
+  .theme-toggle {
+    background: transparent;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .theme-toggle svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .theme-toggle svg.icon-moon { fill: currentColor; stroke: none; }
+  .theme-toggle .icon-moon { display: none; }
+  :root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 
   .nav-toggle span {
     display: block;
@@ -185,7 +278,7 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
   }
 
   .nav-menu.open li {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .nav-menu.open li:last-child { border-bottom: 0; }

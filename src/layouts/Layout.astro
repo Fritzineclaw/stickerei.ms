@@ -138,7 +138,7 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
   nav a:hover { color: var(--color-orange); }
 
   .nav-toggle {
-    display: none;
+    display: flex;
     background: transparent;
     border: 0;
     padding: 8px;
@@ -161,7 +161,35 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
   .nav-toggle.active span:nth-child(2) { opacity: 0; }
   .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  .nav-menu { display: contents; }
+  .nav-menu { display: none; }
+
+  .nav-menu.open {
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 12px 20px;
+    min-width: 220px;
+  }
+
+  .nav-menu.open ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav-menu.open li {
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-menu.open li:last-child { border-bottom: 0; }
+
+  .nav-menu.open a {
+    display: block;
+    padding: 14px 0;
+    font-size: 1rem;
+  }
 
   main { min-height: 60vh; }
 
@@ -301,34 +329,13 @@ const { title, description = "Stickerei in Münster – Polos, Sweatshirts, Caps
 
   .kontakt-info a:hover { color: var(--color-orange); }
 
-  @media (max-width: 768px) {
-    .nav-toggle { display: flex; }
-    .nav-menu {
-      display: none;
+  @media (min-width: 769px) {
+    .nav-menu.open {
       position: absolute;
       top: 100%;
-      left: 0;
       right: 0;
-      background: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      padding: 12px 0;
-    }
-    .nav-menu.open { display: block; }
-    .nav-menu ul {
-      flex-direction: column;
-      gap: 0;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .nav-menu li {
-      border-bottom: 1px solid #eee;
-    }
-    .nav-menu li:last-child { border-bottom: 0; }
-    .nav-menu a {
-      display: block;
-      padding: 14px 0;
-      font-size: 1rem;
+      left: auto;
+      min-width: 220px;
     }
   }
 

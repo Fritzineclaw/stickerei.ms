@@ -1,71 +1,25 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-
-const leistungen = (await getCollection('leistungen')).sort((a, b) => a.data.reihenfolge - b.data.reihenfolge);
-const features = (await getCollection('features')).sort((a, b) => a.data.reihenfolge - b.data.reihenfolge);
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import ServiceGrid from "../components/ServiceGrid.astro";
+import Gallery from "../components/Gallery.astro";
+import Process from "../components/Process.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Stickerei Münster – PIRNANGO">
-  <section class="hero" id="home">
-    <video class="hero-bg" autoplay loop muted playsinline preload="auto" aria-hidden="true">
-      <source src="/videos/stickomator.mp4" type="video/mp4" />
-    </video>
-    <div class="hero-overlay" aria-hidden="true"></div>
-    <div class="container hero-inner">
-      <h1>Stickerei in Münster<br />Textilien mit Ihrem Logo</h1>
-      <p>Bestickung in Klein- und Großauflagen. Polos, Sweatshirts, Caps, Jacken, Stoffzuschnitte und Patches. Für Unternehmen und Privat.</p>
-    </div>
-  </section>
-
-  <section id="intro">
-    <div class="container">
-      <div class="intro-text">
-        <p>Lassen Sie Ihr Logo oder Motiv als Stick auf Gewebe bringen. Eine Stickdatei erstellen wir Ihnen gegen eine einmalige Gebühr.</p>
-        <p>Sie können Textilien bei uns kaufen, oder anliefern und abholen. Wir besticken Polos, Sweatshirts, Caps und Jacken. Außerdem sticken wir auf Stoffzuschnitte und erstellen Patches zum Aufnähen oder Aufdrucken. Individuelle und hochwertige Lösungen für Ihre Textilien.</p>
-        <p>Als erfahrene Stickerei bieten wir Ihnen professionelle Lösungen für Ihre individuellen Bedürfnisse. Ob Sie Kleidung für Ihr Unternehmen oder für private Zwecke besticken lassen möchten – wir versprechen Ihnen hochwertige und zufriedenstellende Ergebnisse. Kontaktieren Sie uns gerne für eine individuelle Beratung.</p>
-      </div>
-
-      <h2>Unsere Vorteile</h2>
-      <div class="product-grid">
-        {features.map((feature) => (
-          <div class="feature-card">
-            <h3>{feature.data.title}</h3>
-            <p>{feature.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section id="leistungen">
-    <div class="container">
-      <h2>Unsere Leistungen</h2>
-      <div class="product-grid">
-        {leistungen.map((leistung) => (
-          <div class="product-card">
-            <h3>{leistung.data.name}</h3>
-            <p>{leistung.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section id="kontakt">
-    <div class="container">
-      <div class="cta">
-        <h2>Jetzt Angebot anfordern</h2>
-        <p>Wir beraten Sie individuell – ob Einzelstück oder Großauflage, ob Unternehmenslogo oder Vereinsemblem.</p>
-        <a href="tel:+4925113656540" class="button">0251 / 13656540</a>
-        <a href="mailto:info@pirnango.de" class="button secondary">info@pirnango.de</a>
-        <div class="kontakt-info">
-          <div>
-            <strong>PIRNANGO GmbH &amp; Co. KG</strong><br />
-            Höltenweg 57, 48155 Münster
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</Layout>
+<BaseLayout
+  title="stickerei.ms | Textilien besticken lassen"
+  description="Hochwertige Stickerei in Münster für Firmenkleidung, Vereine, Geschenke und Kleinserien."
+>
+  <Header />
+  <main>
+    <Hero />
+    <ServiceGrid />
+    <Gallery />
+    <Process />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

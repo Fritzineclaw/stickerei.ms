@@ -1,0 +1,168 @@
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Textilien veredeln lassen</p>
+      <h1>stickerei.ms</h1>
+      <p class="lead">
+        Hochwertige Stickerei für Arbeitskleidung, Vereine, Geschenke und kleine
+        Serien. Persönlich beraten, sauber umgesetzt und langlebig verarbeitet.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="#kontakt">Anfrage starten</a>
+        <a class="button secondary" href="#galerie">Arbeiten ansehen</a>
+      </div>
+    </div>
+    <div class="thread-panel" aria-label="Bestickte Musterfläche">
+      <div class="fabric">
+        <span class="stitch stitch-one"></span>
+        <span class="stitch stitch-two"></span>
+        <span class="stitch stitch-three"></span>
+        <span class="needle"></span>
+        <div class="patch">
+          <span>Logo</span>
+          <strong>Feinstich</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: calc(100svh - 72px);
+    display: grid;
+    align-items: center;
+    padding: 62px 0 78px;
+  }
+
+  .hero-grid {
+    display: grid;
+    align-items: center;
+    gap: 48px;
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+  }
+
+  .lead {
+    max-width: 650px;
+    margin-bottom: 30px;
+    font-size: clamp(1.08rem, 2vw, 1.35rem);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .thread-panel {
+    aspect-ratio: 4 / 5;
+    min-height: 480px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background:
+      radial-gradient(circle at 26% 26%, var(--hero-glow), transparent 28%),
+      linear-gradient(135deg, var(--fabric-shade), rgba(180, 69, 62, 0.12)),
+      var(--linen);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .fabric {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image:
+      repeating-linear-gradient(0deg, var(--sample-grid) 0 1px, transparent 1px 14px),
+      repeating-linear-gradient(90deg, var(--sample-grid-strong) 0 1px, transparent 1px 14px);
+  }
+
+  .patch {
+    position: absolute;
+    right: 12%;
+    bottom: 14%;
+    display: grid;
+    width: min(250px, 62%);
+    aspect-ratio: 1.28;
+    place-items: center;
+    border: 2px dashed var(--patch-line);
+    border-radius: 8px;
+    background: var(--patch-bg);
+    transform: rotate(-4deg);
+  }
+
+  .patch span {
+    color: var(--thread-dark);
+    font-size: 0.82rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .patch strong {
+    margin-top: -30px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+  }
+
+  .stitch,
+  .needle {
+    position: absolute;
+    display: block;
+  }
+
+  .stitch {
+    width: 190px;
+    height: 190px;
+    border: 16px solid transparent;
+    border-top-color: var(--thread);
+    border-right-color: var(--thread);
+    border-radius: 50%;
+  }
+
+  .stitch-one {
+    top: 14%;
+    left: 8%;
+    transform: rotate(18deg);
+  }
+
+  .stitch-two {
+    top: 25%;
+    right: 10%;
+    border-top-color: var(--sage);
+    border-right-color: var(--sage);
+    transform: rotate(126deg) scale(0.74);
+  }
+
+  .stitch-three {
+    bottom: 12%;
+    left: 16%;
+    border-top-color: var(--gold);
+    border-right-color: var(--gold);
+    transform: rotate(250deg) scale(0.58);
+  }
+
+  .needle {
+    top: 20%;
+    left: 46%;
+    width: 8px;
+    height: 270px;
+    border-radius: 99px;
+    background: linear-gradient(var(--paper), #6e6b66);
+    transform: rotate(42deg);
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      min-height: auto;
+      padding-top: 44px;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .thread-panel {
+      min-height: 360px;
+    }
+  }
+</style>

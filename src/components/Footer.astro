@@ -1,0 +1,42 @@
+<footer>
+  <div class="container footer-inner">
+    <p>© {new Date().getFullYear()} stickerei.ms</p>
+    <div>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  div div {
+    display: flex;
+    gap: 18px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 750;
+  }
+
+  @media (max-width: 620px) {
+    .footer-inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

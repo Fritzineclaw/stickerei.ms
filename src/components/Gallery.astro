@@ -1,0 +1,115 @@
+---
+const items = [
+  ["Workwear", "Robuste Jacke mit Brustlogo"],
+  ["Handtuch", "Monogramm in Ton-in-Ton-Stick"],
+  ["Cap", "Vereinslogo mit kräftigem Garn"],
+  ["Tasche", "Namenszug auf Baumwolle"],
+  ["Hoodie", "Rückenmotiv für kleine Serien"],
+  ["Babydecke", "Persönliches Geschenk zur Geburt"],
+];
+---
+
+<section class="section" id="galerie">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow">Galerie</p>
+      <h2>Material, Garn und Motiv im richtigen Zusammenspiel.</h2>
+    </div>
+    <div class="gallery">
+      {items.map(([title, text], index) => (
+        <article class={`gallery-item tone-${index % 3}`}>
+          <div class="sample" aria-hidden="true">
+            <span></span>
+          </div>
+          <h3>{title}</h3>
+          <p>{text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel);
+  }
+
+  .sample {
+    position: relative;
+    aspect-ratio: 1.2;
+    background: linear-gradient(135deg, var(--soft-bg), transparent), var(--linen);
+  }
+
+  .sample::before {
+    position: absolute;
+    inset: 18%;
+    content: "";
+    border: 2px dashed var(--sample-thread);
+    border-radius: 8px;
+    background-image:
+      repeating-linear-gradient(0deg, var(--sample-grid) 0 1px, transparent 1px 12px),
+      repeating-linear-gradient(90deg, var(--sample-grid-strong) 0 1px, transparent 1px 12px);
+  }
+
+  .sample span {
+    position: absolute;
+    inset: 35% 27%;
+    border: 12px solid var(--thread);
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: 50%;
+    transform: rotate(45deg);
+  }
+
+  .tone-1 .sample {
+    background-color: color-mix(in srgb, var(--sage) 22%, var(--linen));
+  }
+
+  .tone-1 .sample span {
+    border-top-color: var(--sage);
+    border-right-color: var(--sage);
+  }
+
+  .tone-2 .sample {
+    background-color: color-mix(in srgb, var(--gold) 24%, var(--linen));
+  }
+
+  .tone-2 .sample span {
+    border-top-color: var(--gold);
+    border-right-color: var(--gold);
+  }
+
+  .gallery-item h3,
+  .gallery-item p {
+    padding-inline: 18px;
+  }
+
+  .gallery-item h3 {
+    margin-top: 18px;
+  }
+
+  .gallery-item p {
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .gallery {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

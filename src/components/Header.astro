@@ -1,0 +1,189 @@
+<header class="site-header">
+  <a class="brand" href="/" aria-label="stickerei.ms Startseite">
+    <span class="mark" aria-hidden="true">S</span>
+    <span>stickerei.ms</span>
+  </a>
+  <div class="header-actions">
+    <nav aria-label="Hauptnavigation">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Darstellung wechseln" aria-pressed="false" title="Tag/Nacht wechseln">
+      <span class="sr-only">Tag/Nacht wechseln</span>
+      <span class="toggle-track" aria-hidden="true">
+        <span class="sun"></span>
+        <span class="moon"></span>
+        <span class="toggle-thumb"></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
+
+  function syncToggle(theme: string) {
+    toggle?.setAttribute("aria-pressed", String(theme === "dark"));
+    toggle?.setAttribute("title", theme === "dark" ? "Tagmodus aktivieren" : "Nachtmodus aktivieren");
+  }
+
+  syncToggle(document.documentElement.dataset.theme || "light");
+
+  toggle?.addEventListener("click", () => {
+    const currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+    localStorage.setItem("theme", nextTheme);
+    syncToggle(nextTheme);
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    min-height: 72px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0 max(20px, calc((100vw - 1120px) / 2));
+    border-bottom: 1px solid var(--line);
+    background: var(--header-bg);
+    backdrop-filter: blur(18px);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+  }
+
+  .mark {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--thread);
+    color: var(--paper);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  nav a {
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 750;
+  }
+
+  nav a:hover {
+    background: var(--hover-bg);
+    color: var(--ink);
+  }
+
+  .theme-toggle {
+    display: inline-flex;
+    width: 58px;
+    height: 34px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--soft-bg);
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .toggle-track {
+    position: relative;
+    display: grid;
+    width: 48px;
+    height: 24px;
+    align-items: center;
+  }
+
+  .sun,
+  .moon,
+  .toggle-thumb {
+    position: absolute;
+    display: block;
+  }
+
+  .sun {
+    left: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201, 148, 69, 0.22);
+  }
+
+  .moon {
+    right: 5px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    box-shadow: -4px 0 0 var(--sage);
+  }
+
+  .toggle-thumb {
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--ink);
+    transition: transform 180ms ease;
+  }
+
+  :global(:root[data-theme="dark"]) .toggle-thumb {
+    transform: translateX(24px);
+  }
+
+  @media (max-width: 760px) {
+    .site-header {
+      position: static;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 16px 14px;
+    }
+
+    .header-actions,
+    nav {
+      width: 100%;
+    }
+
+    .header-actions {
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    nav {
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    nav a {
+      white-space: nowrap;
+    }
+  }
+</style>

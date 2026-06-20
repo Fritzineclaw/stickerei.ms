@@ -1,44 +1,18 @@
 # stickerei.ms
 
-Statische Webseite für stickerei.ms — gebaut mit [Astro](https://astro.build).
+Astro-Startprojekt für die Website stickerei.ms.
 
-## Inhalte bearbeiten
+## Entwicklung
 
-Inhalte liegen als Markdown in `src/content/`:
-
-- **Leistungen:** `src/content/leistungen/*.md`
-- **Features:** `src/content/features/*.md`
-
-Eine `.md` Datei hat vorne Metadaten (Frontmatter):
-
-```markdown
----
-name: Logos sticken
-reihenfolge: 1
----
-
-Ihre Unternehmenslogos als hochwertige Stickdateien …
-```
-
-## Lokal entwickeln
-
-```bash
+```sh
 npm install
-npm run dev      # http://localhost:4321
+npm run dev
 ```
 
-## Bauen für Produktion
+## Aufbau
 
-```bash
-npm run build    # erzeugt dist/
-npm run preview  # Vorschau des Builds
-```
+- `src/pages/index.astro` verbindet die Startseite.
+- `src/components/` enthält die wiederverwendbaren Bereiche.
+- `src/styles/global.css` enthält das globale Design.
 
-## Deployment
-
-Build-Output (`dist/`) wird auf Vercel/Netlify deployed.
-Bei Push auf `main` baut Vercel automatisch.
-
-## Domain
-
-`stickerei.ms` — später per DNS auf Vercel zeigen.
+Kontaktangaben, Impressum und Datenschutz sind Platzhalter und müssen vor Veröffentlichung ersetzt werden.
